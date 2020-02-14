@@ -1,37 +1,37 @@
 import React  from 'react';
-import Link from './link'
-import Heroes from './heroes';
-import MomentWrapper from './moment_warepper';
-import Cart from './cart';
+import {SPARouter} from 'spa-router';
+import Header from '../components/header';
+import Content from '../components/content';
+import Footer from '../components/footer';
+import Model from '../models/task';
+
 class App extends React.Component {
 
-
-  
   state = {
-    update: false,
-    name: `App name is ${this.props.name}`,
-    count: 0,
-    loading :true
-  };
-  handleClick = (event) => {
-    this.setState({count: this.state.count + 1})
+    context: 'all',
+    pending: 0
   }
 
- 
+  componentDidMount(){
+    Model.observe(function(state){
+      this.setState({pending: Model.active().length});
+    }.bind(this));
 
-render(){
-  
-  return (
-    
+    SPARouter.listen({
+      './': this.setState.bind(this, {context: 'all'}),
+      './active': this.setState.bind(this, {context: 'active'}),
+      './completed': this.setState.bind(this, {context: 'completed'})
+    });
+
+    SPARouter.path('');
+
+  }
+  render(){
+    return (
     <div>
-     <small onClick = {this.handleClick}>{this.state.count}</small>
-     <br></br>
-     <Link  className/>
-     <Heroes/>
-     <MomentWrapper format = 'YYYY/MM/DD'/>
-     <br></br>
-     <MomentWrapper date = {new Date("04/10/2020")} format="MMMM"/>
-     <Cart/>
+      <Header/>
+      <Content dataSource = {Model [this.state.context]()}/>
+      <Footer context = {this.state.context} pending = {this.state.pending}/>
     </div>
   )
  };
