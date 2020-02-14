@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React  from 'react';
+import Link from './link'
+import Heroes from './heroes';
+import MomentWrapper from './moment_warepper';
+import Cart from './cart';
+class App extends React.Component {
 
-function App() {
+
+  
+  state = {
+    update: false,
+    name: `App name is ${this.props.name}`,
+    count: 0,
+    loading :true
+  };
+  handleClick = (event) => {
+    this.setState({count: this.state.count + 1})
+  }
+
+ 
+
+render(){
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <div>
+     <small onClick = {this.handleClick}>{this.state.count}</small>
+     <br></br>
+     <Link  className/>
+     <Heroes/>
+     <MomentWrapper format = 'YYYY/MM/DD'/>
+     <br></br>
+     <MomentWrapper date = {new Date("04/10/2020")} format="MMMM"/>
+     <Cart/>
     </div>
-  );
+  )
+ };
 }
 
 export default App;
