@@ -1,13 +1,12 @@
 import React  from 'react';
-import Button from './button';
-
+import React_Router from './react_router';
 
 class App extends React.Component {
 
   render(){
     return (
     <div>
-      <Button/>
+      <React_Router/>
     </div>
   )
  };
