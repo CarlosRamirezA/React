@@ -1,5 +1,5 @@
 import React  from 'react';
-import Buttones from 'button';
+import Button from './button';
 
 
 class App extends React.Component {
@@ -7,7 +7,7 @@ class App extends React.Component {
   render(){
     return (
     <div>
-      <Buttones/>
+      <Button/>
     </div>
   )
  };
