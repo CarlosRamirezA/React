@@ -24,8 +24,8 @@ class React_Router extends React.Component{
                 <hr/>
 
                 <Route exact path="/" component={Home}/>
-                <Route path="/about" component={About}/>
-                <Route path="/users" component={User}/>
+                <Route strict path="/about/"render= {() => <div>About</div> }/>
+                <Route path="/users" children={() => <div>Rendered</div>}/>
             </BrowserRouter>
             
         )
