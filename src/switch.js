@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Link, Switch, Prompt} from "react-router-dom";
 
 const Home = () => <div>Home</div>;
 const About = () => <div>About</div>;
@@ -40,13 +40,15 @@ class SwitchRoute extends React.Component{
                 </li>
               </ul>
               <hr />
-              <Switch>
+              
                 <Route exact path="/" component={Home} />
                 <Route path="/about" component={About} />
                 <Route path="/users/allUsers" component={AllUsers} />
                 <Route path="/users/:id" component={Users} />
                 <Route component={DefaultRoute} />
-              </Switch>
+                
+                <Prompt when = {true} message = "Probando promt"/>
+              
             </div>
           </BrowserRouter>
       )
