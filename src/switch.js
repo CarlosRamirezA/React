@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import { BrowserRouter, Route, Link, Switch, Prompt} from "react-router-dom";
 
 const Home = () => <div>Home</div>;

@@ -1,7 +1,7 @@
-import React  from 'react';
-import React_Router from './react_router';
-import Linked from './router_link';
-import SwitchRoute from './switch'
+import React  from "react";
+
+import SwitchRoute from './switch';
+import InitRedux from './reduxe';
 
 class App extends React.Component {
 
@@ -9,6 +9,7 @@ class App extends React.Component {
     return (
     <div>
       <SwitchRoute/>
+      <InitRedux/>
     </div>
   )
  };
